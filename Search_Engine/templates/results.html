@@ -1,0 +1,96 @@
+<!-- results.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <style>
+        body {
+            background-color: black;;
+            font-family: Arial, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .container_heading{
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            padding: 2px;
+            background-color: #2ecc71; 
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-left: 60px;
+            margin-right: 60px;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        p {
+            text-align: center;
+            font-style: italic;
+            color: #888;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 0 10px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container_heading">
+        <h1>Search Results for "{{ search_text }}"</h1>
+    </div>
+    {% if results %}
+        <ul>
+            {% for result in results %}
+                <li>
+                    {{ result }}
+                    <a href="https://www.opensubtitles.org/en/subtitles/{{ result }}" target="_blank">Download from OpenSubtitles (View Subtitle Page)</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No results found for "{{ search_text }}"</p>
+    {% endif %}
+</body>
+</html>
